@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { Plus } from 'lucide-react';
+
 const EmployeeCreationForm = () => {
   const [formData, setFormData] = useState({
     employeeId: '',
@@ -32,17 +34,25 @@ const EmployeeCreationForm = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200">
-        <div className="px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <span className="text-gray-600 text-sm hidden sm:inline">Employee Master</span>
-            <span className="text-gray-400 hidden sm:inline">|</span>
-            <span className="text-gray-900 text-sm font-medium">Employee Creation</span>
-            <button className="ml-2 w-6 h-6 bg-gray-100 rounded flex items-center justify-center text-gray-600 text-xs">
-              +
+      <div>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center">
+            <button className="px-4 py-2 text-sm text-gray-600 bg-gray-100 border-r border-gray-300">
+
+              Employee Master
+
+            </button>
+            <button className="px-4 py-2 text-sm text-gray-900 font-medium bg-white">
+
+              Employee Creation
+
+            </button>
+
+            <button className="px-1 py-2 border-l border-gray-300 flex items-center justify-center">
+              <Plus size={16} color='gray' />
             </button>
           </div>
-          <button className="text-blue-600 text-sm flex items-center">
+          <button className="text-blue-600 text-sm flex items-center mr-5">
             <span className="mr-1">←</span> Back
           </button>
         </div>
@@ -160,7 +170,7 @@ const EmployeeCreationForm = () => {
           {/* Personal Details Section */}
           <div className="mb-6">
             <h3 className="text-gray-900 font-medium mb-4 text-base">Personal Details</h3>
-            
+
             {/* Third Row - Contact Info */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               <div>
@@ -227,7 +237,7 @@ const EmployeeCreationForm = () => {
           {/* Privacy Policy Note */}
           <div className="mb-6">
             <p className="text-sm text-gray-600">
-              <strong>Note:</strong> You acknowledge that you have read and understood our Privacy Policy, 
+              <strong>Note:</strong> You acknowledge that you have read and understood our Privacy Policy,
               outlining how we collect, use, and protect your personal information.
             </p>
           </div>
