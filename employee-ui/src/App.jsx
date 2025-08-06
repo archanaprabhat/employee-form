@@ -98,7 +98,7 @@ const EmployeeCreationForm = () => {
                 name="employeeId"
                 value={formData.employeeId}
                 onChange={handleInputChange}
-                className="w-full px-3 py-2 rounded bg-gray-300 text-blue-50 text-sm"
+                className="w-full px-3 py-2 border border-gray-300 rounded bg-gray-100 text-gray-500 text-sm"
                 disabled
               />
             </div>
@@ -163,12 +163,14 @@ const EmployeeCreationForm = () => {
               />
             </div>
           </div>
+        </div>
 
-          {/* Personal Details Section */}
-          <div className="mb-6">
-            <h3 className="text-gray-900 font-medium mb-4 text-base">Personal Details</h3>
+        {/* Personal Details Section - Moved outside the padded container */}
+        <div className="mb-6">
+          <h3 className="text-gray-900 font-medium mb-4 text-base bg-gray-100 py-2 px-4">Personal Details</h3>
 
-            {/* Contact Info Row */}
+          {/* Contact Info Row - Back inside padded container */}
+          <div className="px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div>
                 <label className="block text-sm text-gray-700 mb-1">
@@ -230,7 +232,10 @@ const EmployeeCreationForm = () => {
               </div>
             </div>
           </div>
+        </div>
 
+        {/* Back to padded container for remaining content */}
+        <div className="px-4 pb-5">
           {/* Privacy Policy Note */}
           <div className="mb-6">
             <p className="text-sm text-gray-600">
