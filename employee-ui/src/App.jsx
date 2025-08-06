@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import { Plus } from 'lucide-react';
 
 const EmployeeCreationForm = () => {
@@ -32,9 +31,9 @@ const EmployeeCreationForm = () => {
   };
 
   return (
-    <div className="min-h-screen ">
-      {/* Header */}
-      <div>
+    <div className="min-h-screen bg-gray-50">
+      {/* Header Navigation */}
+      <div className="bg-white">
         <div className="flex flex-wrap items-center justify-between border-b border-gray-300 w-full">
           <div className="flex flex-wrap items-center w-full sm:w-auto">
             <button className="px-4 py-2 text-sm text-gray-600 bg-gray-100 border-r border-gray-300 whitespace-nowrap">
@@ -51,7 +50,6 @@ const EmployeeCreationForm = () => {
             <span className="mr-1">←</span> Back
           </button>
         </div>
-
       </div>
 
       {/* Blue header bar */}
@@ -62,31 +60,35 @@ const EmployeeCreationForm = () => {
         </div>
       </div>
 
-      {/* Tabs */}
-      <div className="bg-white border-b border-gray-200">
-        <div className="px-4">
-          <div className="flex space-x-8 overflow-x-auto">
-            <button className="py-4 text-blue-600 border-b-2 border-blue-600 font-medium text-sm whitespace-nowrap">
-              Employee Details
-            </button>
-            <button className="py-4 text-gray-500 text-sm hover:text-gray-700 whitespace-nowrap">
-              Address
-            </button>
-            <button className="py-4 text-gray-500 text-sm hover:text-gray-700 whitespace-nowrap">
-              Skill Set
-            </button>
+      <div className="flex items-center justify-between px-4">
+            {/* Tabs */}
+            <div className="flex space-x-8 overflow-x-auto">
+              <button className=" text-blue-600 border-b-2 border-blue-600 font-medium text-sm whitespace-nowrap">
+                Employee Details
+              </button>
+              <button className=" text-gray-500 text-sm hover:text-gray-700 whitespace-nowrap">
+                Address
+              </button>
+              <button className=" text-gray-500 text-sm hover:text-gray-700 whitespace-nowrap">
+                Skill Set
+              </button>
+            </div>
+            
+            {/* Three Dots Menu */}
+            <div className="flex-shrink-0 py-2">
+              <button className="text-black text-lg font-bold bg-gray-100 w-5 h-5 flex items-center justify-center">
+                ⋮
+              </button>
+            </div>
           </div>
-          <div className="flex justify-end py-2">
-            <button className="text-gray-400">⋮</button>
-          </div>
-        </div>
-      </div>
+      {/* Content Box Container */}
+      <div className="mx-4 mt-6 bg-white border border-gray-900 rounded-lg shadow-sm">
+        {/* Tabs Header with Three Dots in Same Row */}
 
-      {/* Form Content */}
-      <div className="bg-white">
+        {/* Form Content */}
         <div className="px-4 py-6">
           {/* First Row - Employee ID and Type */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div>
               <label className="block text-sm text-gray-700 mb-1">
                 Employee ID <span className="text-gray-400">(Not yet created)</span><span className="text-red-500">*</span>
@@ -125,7 +127,7 @@ const EmployeeCreationForm = () => {
           </div>
 
           {/* Second Row - Names */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div>
               <label className="block text-sm text-gray-700 mb-1">
                 First Name <span className="text-red-500">*</span>
@@ -168,8 +170,8 @@ const EmployeeCreationForm = () => {
           <div className="mb-6">
             <h3 className="text-gray-900 font-medium mb-4 text-base">Personal Details</h3>
 
-            {/* Third Row - Contact Info */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Contact Info Row */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div>
                 <label className="block text-sm text-gray-700 mb-1">
                   Mobile Phone
@@ -257,9 +259,9 @@ const EmployeeCreationForm = () => {
         </div>
       </div>
 
-      {/* Employee Table Section */}
-      <div className="bg-white mt-6">
-        <div className="px-4 py-4 border-t border-gray-200">
+      {/* Added Employee Details Table */}
+      <div className="mx-4 mt-6 bg-white border border-gray-200 rounded-lg shadow-sm">
+        <div className="px-4 py-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 space-y-3 sm:space-y-0">
             <h3 className="text-gray-900 font-medium text-base">Added Employee Details</h3>
             <div className="flex items-center space-x-2 overflow-x-auto">
@@ -299,17 +301,29 @@ const EmployeeCreationForm = () => {
                   <th className="text-left py-3 px-4 text-sm font-medium text-gray-700">
                     <span className="hidden sm:inline">Employee Type</span>
                     <span className="sm:hidden">Type</span>
-                    <button className="ml-1 text-gray-400">↕</button>
+                    <button className="ml-1 text-gray-400">
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                      </svg>
+                    </button>
                   </th>
                   <th className="text-left py-3 px-4 text-sm font-medium text-gray-700">
                     <span className="hidden sm:inline">First Name</span>
                     <span className="sm:hidden">First</span>
-                    <button className="ml-1 text-gray-400">↕</button>
+                    <button className="ml-1 text-gray-400">
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                      </svg>
+                    </button>
                   </th>
                   <th className="text-left py-3 px-4 text-sm font-medium text-gray-700">
                     <span className="hidden sm:inline">Last Name</span>
                     <span className="sm:hidden">Last</span>
-                    <button className="ml-1 text-gray-400">↕</button>
+                    <button className="ml-1 text-gray-400">
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                      </svg>
+                    </button>
                   </th>
                   <th className="text-left py-3 px-4 text-sm font-medium text-gray-700">Action</th>
                 </tr>
@@ -325,8 +339,16 @@ const EmployeeCreationForm = () => {
                   <td className="py-3 px-4 text-sm text-gray-900">XXXXX</td>
                   <td className="py-3 px-4 text-sm text-gray-900">
                     <div className="flex space-x-2">
-                      <button className="text-gray-400 hover:text-gray-600">✏️</button>
-                      <button className="text-gray-400 hover:text-gray-600">🗑️</button>
+                      <button className="text-blue-600 hover:text-blue-800">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                        </svg>
+                      </button>
+                      <button className="text-red-600 hover:text-red-800">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                      </button>
                     </div>
                   </td>
                 </tr>
