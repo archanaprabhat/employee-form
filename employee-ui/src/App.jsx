@@ -35,22 +35,22 @@ const EmployeeCreationForm = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div>
-      <div className="flex flex-wrap items-center justify-between border-b border-gray-300 w-full">
-  <div className="flex flex-wrap items-center w-full sm:w-auto">
-    <button className="px-4 py-2 text-sm text-gray-600 bg-gray-100 border-r border-gray-300 whitespace-nowrap">
-      Employee Master
-    </button>
-    <button className="px-4 py-2 text-sm text-gray-900 font-medium bg-white whitespace-nowrap">
-      Employee Creation
-    </button>
-    <button className="px-3 py-2 border-l border-gray-300 flex items-center justify-center bg-white whitespace-nowrap">
-      <Plus size={16} color='gray' />
-    </button>
-  </div>
-         <button className="hidden lg:flex text-blue-500 text-sm items-center mr-5">
-      <span className="mr-1">←</span> Back
-    </button>
-</div>
+        <div className="flex flex-wrap items-center justify-between border-b border-gray-300 w-full">
+          <div className="flex flex-wrap items-center w-full sm:w-auto">
+            <button className="px-4 py-2 text-sm text-gray-600 bg-gray-100 border-r border-gray-300 whitespace-nowrap">
+              Employee Master
+            </button>
+            <button className="px-4 py-2 text-sm text-gray-900 font-medium bg-white whitespace-nowrap">
+              Employee Creation
+            </button>
+            <button className="px-3 py-2 border-l border-gray-300 flex items-center justify-center bg-white whitespace-nowrap">
+              <Plus size={16} color='gray' />
+            </button>
+          </div>
+          <button className="hidden lg:flex text-blue-500 text-sm items-center mr-5">
+            <span className="mr-1">←</span> Back
+          </button>
+        </div>
 
       </div>
 
