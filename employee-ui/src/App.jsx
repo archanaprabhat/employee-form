@@ -35,8 +35,8 @@ const EmployeeCreationForm = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div>
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
+        <div className="flex items-center justify-between border-gray-300 border-b-1">
+          <div className="flex items-center ">
             <button className="px-4 py-2 text-sm text-gray-600 bg-gray-100 border-r border-gray-300">
 
               Employee Master
@@ -52,7 +52,7 @@ const EmployeeCreationForm = () => {
               <Plus size={16} color='gray' />
             </button>
           </div>
-          <button className="text-blue-600 text-sm flex items-center mr-5">
+          <button className="text-blue-500 text-sm flex items-center mr-5">
             <span className="mr-1">←</span> Back
           </button>
         </div>
