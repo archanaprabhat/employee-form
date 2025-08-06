@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus } from 'lucide-react';
+import { Plus, ChevronDown } from 'lucide-react';
 
 const EmployeeCreationForm = () => {
   const [formData, setFormData] = useState({
@@ -56,39 +56,39 @@ const EmployeeCreationForm = () => {
       <div className='pb-5'></div>
       <div className="bg-blue-100 mx-2">
         <div className="px-4 py-2">
-          <h1 className="text-gray-700">Employee Creation</h1>
+          <h1 className="text-gray-700 mx-3" >Employee Creation</h1>
         </div>
       </div>
 
-      <div className="flex items-center justify-between px-4">
+      <div className="flex items-center justify-between px-4 pt-4 mx-4">
             {/* Tabs */}
             <div className="flex space-x-8 overflow-x-auto">
-              <button className=" text-blue-600 border-b-2 border-blue-600 font-medium text-sm whitespace-nowrap">
+              <button className="py-2 text-blue-500 border-b-2 border-blue-500 font-medium text-sm whitespace-nowrap">
                 Employee Details
               </button>
-              <button className=" text-gray-500 text-sm hover:text-gray-700 whitespace-nowrap">
+              <button className=" py-2 text-gray-500 text-sm hover:text-gray-700 whitespace-nowrap">
                 Address
               </button>
-              <button className=" text-gray-500 text-sm hover:text-gray-700 whitespace-nowrap">
+              <button className=" py-2 text-gray-500 text-sm hover:text-gray-700 whitespace-nowrap">
                 Skill Set
               </button>
             </div>
             
             {/* Three Dots Menu */}
-            <div className="flex-shrink-0 py-2">
+            <div className="flex-shrink-0">
               <button className="text-black text-lg font-bold bg-gray-100 w-5 h-5 flex items-center justify-center">
                 ⋮
               </button>
             </div>
           </div>
       {/* Content Box Container */}
-      <div className="mx-4 mt-6 bg-white border border-gray-900 rounded-lg shadow-sm">
+      <div className="mx-2 bg-white border border-gray-300 shadow-sm">
         {/* Tabs Header with Three Dots in Same Row */}
 
         {/* Form Content */}
-        <div className="px-4 py-6">
+        <div className="px-4 py-5">
           {/* First Row - Employee ID and Type */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
             <div>
               <label className="block text-sm text-gray-700 mb-1">
                 Employee ID <span className="text-gray-400">(Not yet created)</span><span className="text-red-500">*</span>
@@ -98,7 +98,7 @@ const EmployeeCreationForm = () => {
                 name="employeeId"
                 value={formData.employeeId}
                 onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded bg-gray-50 text-gray-500 text-sm"
+                className="w-full px-3 py-2 rounded bg-gray-300 text-blue-50 text-sm"
                 disabled
               />
             </div>
@@ -118,9 +118,7 @@ const EmployeeCreationForm = () => {
                   <option value="Consultant">Consultant</option>
                 </select>
                 <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
+                <ChevronDown />
                 </div>
               </div>
             </div>
