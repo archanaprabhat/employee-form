@@ -249,6 +249,81 @@ const EmployeeCreationForm = () => {
           </div>
         </div>
       </div>
+
+      {/* Employee Table Section */}
+      <div className="bg-white mt-6">
+        <div className="px-6 py-4 border-t border-gray-200">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-gray-900 font-medium">Added Employee Details</h3>
+            <div className="flex items-center space-x-2">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search By"
+                  className="pl-8 pr-4 py-2 border border-gray-300 rounded text-sm"
+                />
+                <svg className="w-4 h-4 text-gray-400 absolute left-2 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+              <button className="p-2 text-gray-400 hover:text-gray-600">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                </svg>
+              </button>
+              <button className="p-2 text-gray-400 hover:text-gray-600">+</button>
+              <button className="p-2 text-gray-400 hover:text-gray-600">↓</button>
+              <button className="p-2 text-gray-400 hover:text-gray-600">↗</button>
+              <button className="p-2 text-gray-400 hover:text-gray-600">📋</button>
+              <button className="p-2 text-gray-400 hover:text-gray-600">⋮</button>
+            </div>
+          </div>
+
+          {/* Table */}
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="bg-gray-50 border-b border-gray-200">
+                  <th className="text-left py-3 px-4 text-sm font-medium text-gray-700">
+                    <input type="checkbox" className="mr-2" />
+                    No
+                  </th>
+                  <th className="text-left py-3 px-4 text-sm font-medium text-gray-700">
+                    Employee Type 
+                    <button className="ml-1 text-gray-400">↕</button>
+                  </th>
+                  <th className="text-left py-3 px-4 text-sm font-medium text-gray-700">
+                    First Name 
+                    <button className="ml-1 text-gray-400">↕</button>
+                  </th>
+                  <th className="text-left py-3 px-4 text-sm font-medium text-gray-700">
+                    Last Name 
+                    <button className="ml-1 text-gray-400">↕</button>
+                  </th>
+                  <th className="text-left py-3 px-4 text-sm font-medium text-gray-700">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-gray-200">
+                  <td className="py-3 px-4 text-sm text-gray-900">
+                    <input type="checkbox" className="mr-2" />
+                    01
+                  </td>
+                  <td className="py-3 px-4 text-sm text-gray-900">XXXX</td>
+                  <td className="py-3 px-4 text-sm text-gray-900">XXXXXX</td>
+                  <td className="py-3 px-4 text-sm text-gray-900">XXXXX</td>
+                  <td className="py-3 px-4 text-sm text-gray-900">
+                    <div className="flex space-x-2">
+                      <button className="text-gray-400 hover:text-gray-600">✏️</button>
+                      <button className="text-gray-400 hover:text-gray-600">🗑️</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
