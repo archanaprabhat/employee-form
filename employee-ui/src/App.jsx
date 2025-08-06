@@ -32,7 +32,7 @@ const EmployeeCreationForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen ">
       {/* Header */}
       <div>
         <div className="flex flex-wrap items-center justify-between border-b border-gray-300 w-full">
@@ -55,9 +55,10 @@ const EmployeeCreationForm = () => {
       </div>
 
       {/* Blue header bar */}
-      <div className="bg-blue-50 border-b border-blue-100">
-        <div className="px-4 py-3">
-          <h1 className="text-gray-900 font-medium text-base">Employee Creation</h1>
+      <div className='pb-5'></div>
+      <div className="bg-blue-100 mx-2">
+        <div className="px-4 py-2">
+          <h1 className="text-gray-700">Employee Creation</h1>
         </div>
       </div>
 
