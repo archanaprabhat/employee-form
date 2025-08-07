@@ -95,6 +95,14 @@ const TableHeader = ({ header, selectedRows, filteredEmployees, onSelectAll }) =
 );
 
 const EmployeeCreationForm = () => {
+  // Main navigation state
+  const [activeMainTab, setActiveMainTab] = useState('employee-creation');
+  const [mainTabs, setMainTabs] = useState([
+    { id: 'employee-master', label: 'Employee Master', closeable: false },
+    { id: 'employee-creation', label: 'Employee Creation', closeable: true }
+  ]);
+
+  // Sub-tab state (for form tabs within employee creation)
   const [activeTab, setActiveTab] = useState('employee-details');
   const [employees, setEmployees] = useState([
     { id: 1, employeeType: 'XXXX', firstName: 'XXXXXX', lastName: 'XXXXX' }
@@ -274,6 +282,37 @@ const EmployeeCreationForm = () => {
     document.body.removeChild(link);
   };
 
+  // Main tab functions
+  const handleMainTabClick = (tabId) => {
+    setActiveMainTab(tabId);
+  };
+
+  const handleAddNewTab = () => {
+    const newTabId = `employee-creation-${Date.now()}`;
+    const newTab = {
+      id: newTabId,
+      label: 'Employee Creation',
+      closeable: true
+    };
+    setMainTabs([...mainTabs, newTab]);
+    setActiveMainTab(newTabId);
+    // Reset form when creating new tab
+    handleCancel();
+  };
+
+  const handleCloseTab = (tabId, e) => {
+    e.stopPropagation();
+    if (mainTabs.length <= 1) return; // Prevent closing last tab
+    
+    const updatedTabs = mainTabs.filter(tab => tab.id !== tabId);
+    setMainTabs(updatedTabs);
+    
+    // If closing active tab, switch to the first available tab
+    if (activeMainTab === tabId) {
+      setActiveMainTab(updatedTabs[0].id);
+    }
+  };
+
   // Filter employees based on search
   const filteredEmployees = employees.filter(emp => 
     emp.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -335,95 +374,91 @@ const EmployeeCreationForm = () => {
     { id: 'skill-set', label: 'Skill Set' }
   ];
 
-  // Tab content renderer
-  const renderTabContent = () => {
-    switch(activeTab) {
-      case 'employee-details':
-        return (
-          <div className="px-4 py-5">
-            {/* Employee ID and Type Row */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
-              <InputField
-                name="employeeId"
-                label="Employee ID"
-                placeholder="(Not yet created)"
-                required={true}
-                disabled={true}
-                value={formData.employeeId}
-                onChange={handleInputChange}
-                error={errors.employeeId}
-              />
-              <SelectField
-                name="employeeType"
-                label="Employee Type"
-                options={employeeTypeOptions}
-                required={true}
-                value={formData.employeeType}
-                onChange={handleInputChange}
-                error={errors.employeeType}
-              />
-            </div>
-
-            {/* Name Fields Row */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              {nameFields.map(field => (
-                <InputField
-                  key={field.name}
-                  name={field.name}
-                  label={field.label}
-                  required={field.required}
-                  value={formData[field.name]}
-                  onChange={handleInputChange}
-                  error={errors[field.name]}
-                />
-              ))}
-            </div>
-          </div>
-        );
-      
-      case 'address':
-        return (
-          <div className="px-4 py-5 text-center">
-            <h2 className="text-xl text-gray-600">Address Tab</h2>
-            <p className="text-gray-500 mt-2">Address form fields would go here</p>
-          </div>
-        );
-      
-      case 'skill-set':
-        return (
-          <div className="px-4 py-5 text-center">
-            <h2 className="text-xl text-gray-600">Skill Set Tab</h2>
-            <p className="text-gray-500 mt-2">Skill set form fields would go here</p>
-          </div>
-        );
-      
-      default:
-        return null;
-    }
-  };
-
-  return (
+  // Employee Master Page Component
+  const renderEmployeeMasterPage = () => (
     <div className="min-h-screen bg-gray-50">
-      {/* Navigation Header */}
-      <div className="bg-white">
-        <div className="flex flex-wrap items-center justify-between border-b border-gray-300 w-full">
-          <div className="flex flex-wrap items-center w-full sm:w-auto">
-            <button className="px-4 py-2 text-sm text-gray-600 bg-gray-100 border-r border-gray-300 whitespace-nowrap">
-              Employee Master
-            </button>
-            <button className="px-4 py-2 text-sm text-gray-900 font-medium bg-white whitespace-nowrap">
-              Employee Creation
-            </button>
-            <button className="px-3 py-2 border-l border-gray-300 flex items-center justify-center bg-white whitespace-nowrap">
-              <Plus size={16} color='gray' />
-            </button>
-          </div>
-          <button className="hidden lg:flex text-blue-500 text-sm items-center mr-5">
-            <span className="mr-1">←</span> Back
-          </button>
+      {/* Page Header */}
+      <div className='pb-5'></div>
+      <div className="bg-blue-100 mx-2">
+        <div className="px-4 py-2">
+          <h1 className="text-gray-700 mx-3">Employee Master</h1>
         </div>
       </div>
 
+      {/* Employee Master Content */}
+      <div className="mx-2 mt-4 bg-white border border-gray-300 shadow-sm">
+        <div className="px-4 py-8 text-center">
+          <div className="max-w-md mx-auto">
+            <div className="mb-6">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Plus className="w-8 h-8 text-blue-500" />
+              </div>
+              <h2 className="text-xl font-medium text-gray-800 mb-2">Welcome to Employee Master</h2>
+              <p className="text-gray-600 text-sm">
+                This is the main dashboard for managing all your employees. Here you can view, search, and manage your employee database.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+              <button 
+                onClick={() => handleAddNewTab()}
+                className="flex items-center justify-center space-x-2 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm"
+              >
+                <Plus className="w-4 h-4" />
+                <span>Create New Employee</span>
+              </button>
+              
+              <button 
+                className="flex items-center justify-center space-x-2 px-4 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm"
+              >
+                <Search className="w-4 h-4" />
+                <span>Search Employees</span>
+              </button>
+            </div>
+
+            {/* Employee Statistics */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 pt-8 border-t border-gray-200">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-blue-600">{employees.length}</div>
+                <div className="text-xs text-gray-500">Total Employees</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">
+                  {employees.filter(emp => emp.employeeType === 'Own').length}
+                </div>
+                <div className="text-xs text-gray-500">Own Employees</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-orange-600">
+                  {employees.filter(emp => emp.employeeType === 'Contract').length}
+                </div>
+                <div className="text-xs text-gray-500">Contract</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-purple-600">
+                  {employees.filter(emp => emp.employeeType === 'Consultant').length}
+                </div>
+                <div className="text-xs text-gray-500">Consultants</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  // Main content renderer based on active main tab
+  const renderMainContent = () => {
+    if (activeMainTab === 'employee-master') {
+      return renderEmployeeMasterPage();
+    } else {
+      // Employee Creation page (default)
+      return renderEmployeeCreationPage();
+    }
+  };
+
+  const renderEmployeeCreationPage = () => (
+    <div className="min-h-screen bg-gray-50">
       {/* Page Header */}
       <div className='pb-5'></div>
       <div className="bg-blue-100 mx-2">
@@ -618,6 +653,127 @@ const EmployeeCreationForm = () => {
           </div>
         </div>
       </div>
+    </div>
+  );
+
+  // Tab content renderer
+  const renderTabContent = () => {
+    switch(activeTab) {
+      case 'employee-details':
+        return (
+          <div className="px-4 py-5">
+            {/* Employee ID and Type Row */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+              <InputField
+                name="employeeId"
+                label="Employee ID"
+                placeholder="(Not yet created)"
+                required={true}
+                disabled={true}
+                value={formData.employeeId}
+                onChange={handleInputChange}
+                error={errors.employeeId}
+              />
+              <SelectField
+                name="employeeType"
+                label="Employee Type"
+                options={employeeTypeOptions}
+                required={true}
+                value={formData.employeeType}
+                onChange={handleInputChange}
+                error={errors.employeeType}
+              />
+            </div>
+
+            {/* Name Fields Row */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              {nameFields.map(field => (
+                <InputField
+                  key={field.name}
+                  name={field.name}
+                  label={field.label}
+                  required={field.required}
+                  value={formData[field.name]}
+                  onChange={handleInputChange}
+                  error={errors[field.name]}
+                />
+              ))}
+            </div>
+          </div>
+        );
+      
+      case 'address':
+        return (
+          <div className="px-4 py-5 text-center">
+            <h2 className="text-xl text-gray-600">Address Tab</h2>
+            <p className="text-gray-500 mt-2">Address form fields would go here</p>
+          </div>
+        );
+      
+      case 'skill-set':
+        return (
+          <div className="px-4 py-5 text-center">
+            <h2 className="text-xl text-gray-600">Skill Set Tab</h2>
+            <p className="text-gray-500 mt-2">Skill set form fields would go here</p>
+          </div>
+        );
+      
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Navigation Header */}
+      <div className="bg-white">
+        <div className="flex items-center justify-between border-b border-gray-300 w-full overflow-x-auto">
+          <div className="flex items-center min-w-0 flex-1">
+            {/* Dynamic Tabs */}
+            <div className="flex items-center min-w-0">
+              {mainTabs.map((tab, index) => (
+                <div key={tab.id} className="flex items-center flex-shrink-0">
+                  <button 
+                    onClick={() => handleMainTabClick(tab.id)}
+                    className={`flex items-center px-3 sm:px-4 py-2 text-xs sm:text-sm border-r border-gray-300 whitespace-nowrap min-w-0 ${
+                      activeMainTab === tab.id 
+                        ? 'text-gray-900 font-medium bg-white' 
+                        : 'text-gray-600 bg-gray-100 hover:bg-gray-50'
+                    }`}
+                  >
+                    <span className="truncate max-w-[100px] sm:max-w-none">{tab.label}</span>
+                    {tab.closeable && mainTabs.length > 1 && (
+                      <button 
+                        onClick={(e) => handleCloseTab(tab.id, e)}
+                        className="ml-1 sm:ml-2 text-gray-400 hover:text-gray-600 flex-shrink-0"
+                      >
+                        <span className="text-sm">×</span>
+                      </button>
+                    )}
+                  </button>
+                </div>
+              ))}
+            </div>
+            
+            {/* Add New Tab Button */}
+            <button 
+              onClick={handleAddNewTab}
+              className="px-2 sm:px-3 py-2 border-r border-gray-300 flex items-center justify-center bg-white hover:bg-gray-50 flex-shrink-0"
+              title="Add New Tab"
+            >
+              <Plus size={14} className="text-gray-600" />
+            </button>
+          </div>
+          
+          {/* Back Button - Hidden on small screens, shown on larger screens */}
+          <button className="hidden lg:flex text-blue-500 text-sm items-center mr-5 flex-shrink-0">
+            <span className="mr-1">←</span> Back
+          </button>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      {renderMainContent()}
     </div>
   );
 };
