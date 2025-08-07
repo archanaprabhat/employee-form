@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, ChevronDown, ListFilter, Download, Upload, Trash, EllipsisVertical } from 'lucide-react';
+import { Plus, ChevronDown, ListFilter, Download, Upload, Trash, EllipsisVertical, Search } from 'lucide-react';
 
 const EmployeeCreationForm = () => {
   const [formData, setFormData] = useState({
@@ -224,9 +224,7 @@ const EmployeeCreationForm = () => {
                     <option value="No">No</option>
                   </select>
                   <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
+                  <ChevronDown />
                   </div>
                 </div>
               </div>
@@ -239,8 +237,8 @@ const EmployeeCreationForm = () => {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between space-y-2 sm:space-y-0">
             {/* Privacy Policy Note */}
             <div className="flex-1">
-              <p className="text-xs text-gray-700">
-                <strong>Note:</strong> You acknowledge that you have read and understood our <span className="underline">Privacy Policy</span>, outlining how we collect, use, and protect your personal information.
+              <p className="text-xs text-gray-700 py-4" >
+                <strong>Note:</strong> You acknowledge that you have read and understood our Privacy Policy, <br /> outlining how we collect, use, and protect your personal information.
               </p>
             </div>
 
@@ -248,7 +246,7 @@ const EmployeeCreationForm = () => {
             <div className="flex space-x-2 flex-shrink-0">
               <button
                 onClick={handleCancel}
-                className="px-4 py-1.5 border border-red-500 text-red-500 rounded hover:bg-red-50 text-xs"
+                className="px-4 py-1.5 border border-red-500 text-red-500 rounded hover:bg-red-50 text-xs bg-white"
               >
                 Cancel
               </button>
@@ -274,9 +272,7 @@ const EmployeeCreationForm = () => {
                     placeholder="Search By"
                     className="pl-8 pr-3 py-1 border border-gray-300 rounded text-xs w-48 sm:w-56 md:w-64"
                   />
-                  <svg className="w-3 h-3 text-gray-400 absolute left-2 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
+                  <Search />
                 </div>
                 <button className="p-1 text-gray-400 hover:text-gray-600 flex-shrink-0">
                   <ListFilter className="w-3 h-3" />
