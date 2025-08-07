@@ -188,13 +188,28 @@ const EmployeeCreationForm = () => {
       return;
     }
 
-    const newEmployee = {
-      id: employees.length + 1,
-      employeeId: `EMP${String(employees.length + 1).padStart(3, '0')}`,
-      ...formData
-    };
+    if (editingEmployee) {
+      // Update existing employee
+      const updatedEmployees = employees.map(emp => 
+        emp.id === editingEmployee 
+          ? { ...formData, id: editingEmployee }
+          : emp
+      );
+      setEmployees(updatedEmployees);
+      setEditingEmployee(null);
+      alert('Employee updated successfully!');
+    } else {
+      // Create new employee
+      const newEmployee = {
+        id: employees.length + 1,
+        employeeId: `EMP${String(employees.length + 1).padStart(3, '0')}`,
+        ...formData
+      };
+      setEmployees([...employees, newEmployee]);
+      alert('Employee created successfully!');
+    }
 
-    setEmployees([...employees, newEmployee]);
+    // Reset form
     setFormData({
       employeeId: '',
       employeeType: 'Own',
@@ -208,8 +223,6 @@ const EmployeeCreationForm = () => {
     });
     setErrors({});
     setIsFormValid(false);
-    
-    alert('Employee created successfully!');
   };
 
   const handleCancel = () => {
@@ -492,7 +505,7 @@ const EmployeeCreationForm = () => {
             <h3 className="text-gray-900 font-medium mb-4 text-base bg-gray-100 py-2 px-4">
               Personal Details
             </h3>
-            <div className="px-4">
+            <div className="px-4 mr-20">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {personalDetailsFields.map(field => (
                   field.type === 'select' ? (
@@ -652,18 +665,18 @@ const EmployeeCreationForm = () => {
             </div>
           </div>
         </div>
+              </div>
       </div>
-    </div>
-  );
+    );
 
   // Tab content renderer
   const renderTabContent = () => {
     switch(activeTab) {
       case 'employee-details':
         return (
-          <div className="px-4 py-5">
+          <div className="px-4 py-5 mr-20">
             {/* Employee ID and Type Row */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-6">
               <InputField
                 name="employeeId"
                 label="Employee ID"
@@ -686,7 +699,7 @@ const EmployeeCreationForm = () => {
             </div>
 
             {/* Name Fields Row */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
               {nameFields.map(field => (
                 <InputField
                   key={field.name}
