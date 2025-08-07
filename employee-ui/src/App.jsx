@@ -270,29 +270,29 @@ const EmployeeCreationForm = () => {
                   <input
                     type="text"
                     placeholder="Search By"
-                    className="pl-8 pr-3 py-1.5 border border-gray-300 rounded text-xs w-48 sm:w-56 md:w-64"
+                    className="pl-8 pr-3 py-1.5 border border-gray-300 rounded text-xs w-48 sm:w-56 md:w-64 placeholder-gray-400"
                   />
                   <div className="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none">
-                    <Search className="w-3 h-3 text-gray-400" />
+                    <Search className="w-4 h-4 text-gray-400 stroke-3" />
                   </div>
                 </div>
-                <button className="p-1.5 text-gray-400 hover:text-gray-600 flex-shrink-0">
-                  <ListFilter className="w-3 h-3" />
+                <button className="p-1.5 text-gray-600 hover:text-gray-800 flex-shrink-0 border border-gray-300 rounded bg-white hover:bg-gray-50">
+                  <ListFilter className="w-4 h-4 stroke-3" />
                 </button>
-                <button className="p-1.5 text-gray-400 hover:text-gray-600 flex-shrink-0">
-                  <Plus className="w-3 h-3" />
+                <button className="p-1.5 text-gray-600 hover:text-gray-800 flex-shrink-0 border border-gray-300 rounded bg-white hover:bg-gray-50">
+                  <Plus className="w-4 h-4 stroke-3" />
                 </button>
-                <button className="p-1.5 text-gray-400 hover:text-gray-600 flex-shrink-0">
-                  <Download className="w-3 h-3" />
+                <button className="p-1.5 text-gray-600 hover:text-gray-800 flex-shrink-0 border border-gray-300 rounded bg-white hover:bg-gray-50">
+                  <Download className="w-4 h-4 stroke-3" />
                 </button>
-                <button className="p-1.5 text-gray-400 hover:text-gray-600 flex-shrink-0">
-                  <Upload className="w-3 h-3" />
+                <button className="p-1.5 text-gray-600 hover:text-gray-800 flex-shrink-0 border border-gray-300 rounded bg-white hover:bg-gray-50">
+                  <Upload className="w-4 h-4 stroke-3" />
                 </button>
-                <button className="p-1.5 text-gray-400 hover:text-gray-600 flex-shrink-0">
-                  <Trash className="w-3 h-3" />
+                <button className="p-1.5 text-gray-600 hover:text-gray-800 flex-shrink-0 border border-gray-300 rounded bg-white hover:bg-gray-50">
+                  <Trash className="w-4 h-4 stroke-3" />
                 </button>
-                <button className="p-1.5 text-gray-400 hover:text-gray-600 flex-shrink-0">
-                  <EllipsisVertical className="w-3 h-3" />
+                <button className="p-1.5 text-gray-600 hover:text-gray-800 flex-shrink-0 border border-gray-300 rounded bg-white hover:bg-gray-50">
+                  <EllipsisVertical className="w-4 h-4 stroke-2" />
                 </button>
               </div>
             </div>
@@ -310,30 +310,16 @@ const EmployeeCreationForm = () => {
                     <th className="text-left py-2 px-3 text-xs font-medium text-gray-700 min-w-24">
                       <span className="hidden md:inline">Employee Type</span>
                       <span className="md:hidden">Type</span>
-                      <button className="ml-1 text-gray-400">
-                        <svg className="w-2 h-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
-                        </svg>
-                      </button>
                     </th>
                     <th className="text-left py-2 px-3 text-xs font-medium text-gray-700 min-w-24">
                       <span className="hidden sm:inline">First Name</span>
                       <span className="sm:hidden">First</span>
-                      <button className="ml-1 text-gray-400">
-                        <svg className="w-2 h-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
-                        </svg>
-                      </button>
                     </th>
                     <th className="text-left py-2 px-3 text-xs font-medium text-gray-700 min-w-24">
                       <span className="hidden sm:inline">Last Name</span>
                       <span className="sm:hidden">Last</span>
-                      <button className="ml-1 text-gray-400">
-                        <svg className="w-2 h-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
-                        </svg>
-                      </button>
                     </th>
+                    <th className="text-left py-2 px-3 text-xs font-medium text-gray-700 w-20">Action</th>
                     <th className="text-left py-2 px-3 text-xs font-medium text-gray-700 w-20">Action</th>
                   </tr>
                 </thead>
