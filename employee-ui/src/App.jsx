@@ -224,9 +224,7 @@ const EmployeeCreationForm = () => {
                     <option value="No">No</option>
                   </select>
                   <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
+                  <ChevronDown />
                   </div>
                 </div>
               </div>
@@ -234,29 +232,31 @@ const EmployeeCreationForm = () => {
           </div>
         </div>
 
-        {/* Note and Buttons Section with Blue Background */}
-        <div className="bg-blue-50 px-4 py-3">
-          {/* Privacy Policy Note */}
-          <div className="mb-3">
-            <p className="text-xs text-gray-700">
+        {/* Note and Buttons Section with Blue Background - Same Line */}
+        <div className="bg-blue-50 px-4 py-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between space-y-2 sm:space-y-0">
+            {/* Privacy Policy Note */}
+            <div className="flex-1">
+              <p className="text-xs text-gray-700">
               <strong>Note:</strong> You acknowledge that you have read and understood our Privacy Policy, <br/> outlining how we collect, use, and protect your personal information.
-            </p>
-          </div>
+              </p>
+            </div>
 
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-2">
-            <button
-              onClick={handleCancel}
-              className="w-full sm:w-auto px-4 py-1.5 border border-red-500 text-red-500 rounded hover:bg-red-50 text-xs"
-            >
-              Cancel
-            </button>
-            <button
-              onClick={handleCreate}
-              className="w-full sm:w-auto px-4 py-1.5 bg-green-600 text-white rounded hover:bg-green-700 text-xs"
-            >
-              Create Employee
-            </button>
+            {/* Action Buttons */}
+            <div className="flex space-x-2 flex-shrink-0">
+              <button
+                onClick={handleCancel}
+                className="px-7 py-1.5 border bg-white border-red-500 text-red-500 rounded hover:bg-red-50 text-xs"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleCreate}
+                className="px-4 py-1.5 bg-green-600 text-white rounded hover:bg-green-700 text-xs"
+              >
+                Create Employee
+              </button>
+            </div>
           </div>
         </div>
 
