@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, ChevronDown, ListFilter, Download, Upload, Trash, EllipsisVertical, Search } from 'lucide-react';
+import { Plus, ChevronDown, ListFilter, Download, Upload, Trash, EllipsisVertical, Search, PencilLine } from 'lucide-react';
 
 const EmployeeCreationForm = () => {
   const [formData, setFormData] = useState({
@@ -260,7 +260,7 @@ const EmployeeCreationForm = () => {
           </div>
         </div>
 
-        {/* Added Employee Details Table - Part of the same container */}
+        {/* Added Employee Details Table - Fixed UI */}
         <div className="bg-gray-50 border-t border-gray-200">
           <div className="px-4 py-3">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 space-y-2 sm:space-y-0">
@@ -273,26 +273,26 @@ const EmployeeCreationForm = () => {
                     className="pl-8 pr-3 py-1.5 border border-gray-300 rounded text-xs w-48 sm:w-56 md:w-64 placeholder-gray-400"
                   />
                   <div className="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none">
-                    <Search className="w-4 h-4 text-gray-400 stroke-3" />
+                    <Search className="w-4 h-4 text-gray-400" />
                   </div>
                 </div>
                 <button className="p-1.5 text-gray-600 hover:text-gray-800 flex-shrink-0 border border-gray-300 rounded bg-white hover:bg-gray-50">
-                  <ListFilter className="w-4 h-4 stroke-3" />
+                  <ListFilter className="w-4 h-4" />
                 </button>
                 <button className="p-1.5 text-gray-600 hover:text-gray-800 flex-shrink-0 border border-gray-300 rounded bg-white hover:bg-gray-50">
-                  <Plus className="w-4 h-4 stroke-3" />
+                  <Plus className="w-4 h-4" />
                 </button>
                 <button className="p-1.5 text-gray-600 hover:text-gray-800 flex-shrink-0 border border-gray-300 rounded bg-white hover:bg-gray-50">
-                  <Download className="w-4 h-4 stroke-3" />
+                  <Download className="w-4 h-4" />
                 </button>
                 <button className="p-1.5 text-gray-600 hover:text-gray-800 flex-shrink-0 border border-gray-300 rounded bg-white hover:bg-gray-50">
-                  <Upload className="w-4 h-4 stroke-3" />
+                  <Upload className="w-4 h-4" />
                 </button>
                 <button className="p-1.5 text-gray-600 hover:text-gray-800 flex-shrink-0 border border-gray-300 rounded bg-white hover:bg-gray-50">
-                  <Trash className="w-4 h-4 stroke-3" />
+                  <Trash className="w-4 h-4" />
                 </button>
                 <button className="p-1.5 text-gray-600 hover:text-gray-800 flex-shrink-0 border border-gray-300 rounded bg-white hover:bg-gray-50">
-                  <EllipsisVertical className="w-4 h-4 stroke-2" />
+                  <EllipsisVertical className="w-4 h-4" />
                 </button>
               </div>
             </div>
@@ -301,48 +301,54 @@ const EmployeeCreationForm = () => {
             <div className="overflow-x-auto">
               <table className="w-full min-w-full bg-white border border-gray-200 rounded">
                 <thead>
-                  <tr className="bg-gray-50 border-b border-gray-200">
-                    <th className="text-left py-2 px-3 text-xs font-medium text-gray-700 w-16">
-                      <input type="checkbox" className="mr-2 scale-75" />
-                      <span className="hidden sm:inline">No</span>
-                      <span className="sm:hidden">#</span>
+                  <tr className="bg-blue-50 border-b border-gray-200">
+                    <th className="text-left py-2 px-3 text-xs font-medium text-gray-700 min-w-16">
+                      <div className="flex items-center">
+                        <input type="checkbox" className="mr-2 scale-75" />
+                        <span>No</span>
+                      </div>
                     </th>
-                    <th className="text-left py-2 px-3 text-xs font-medium text-gray-700 min-w-24">
-                      <span className="hidden md:inline">Employee Type</span>
-                      <span className="md:hidden">Type</span>
+                    <th className="text-left py-2 px-3 text-xs font-medium text-gray-700 min-w-32">
+                      <div className="flex items-center justify-between">
+                        <span>Employee Type</span>
+                        <Search className="w-3 h-3 text-gray-500 ml-1" />
+                      </div>
                     </th>
-                    <th className="text-left py-2 px-3 text-xs font-medium text-gray-700 min-w-24">
-                      <span className="hidden sm:inline">First Name</span>
-                      <span className="sm:hidden">First</span>
+                    <th className="text-left py-2 px-3 text-xs font-medium text-gray-700 min-w-28">
+                      <div className="flex items-center justify-between">
+                        <span>First Name</span>
+                        <Search className="w-3 h-3 text-gray-500 ml-1" />
+                      </div>
                     </th>
-                    <th className="text-left py-2 px-3 text-xs font-medium text-gray-700 min-w-24">
-                      <span className="hidden sm:inline">Last Name</span>
-                      <span className="sm:hidden">Last</span>
+                    <th className="text-left py-2 px-3 text-xs font-medium text-gray-700 min-w-28">
+                      <div className="flex items-center justify-between">
+                        <span>Last Name</span>
+                        <Search className="w-3 h-3 text-gray-500 ml-1" />
+                      </div>
                     </th>
-                    <th className="text-left py-2 px-3 text-xs font-medium text-gray-700 w-20">Action</th>
-                    <th className="text-left py-2 px-3 text-xs font-medium text-gray-700 w-20">Action</th>
+                    <th className="text-center py-2 px-3 text-xs font-medium text-gray-700 w-20">
+                      Action
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b border-gray-200 hover:bg-gray-50">
                     <td className="py-2 px-3 text-xs text-gray-900">
-                      <input type="checkbox" className="mr-2 scale-75" />
-                      01
+                      <div className="flex items-center">
+                        <input type="checkbox" className="mr-2 scale-75" />
+                        <span>01</span>
+                      </div>
                     </td>
                     <td className="py-2 px-3 text-xs text-gray-900">XXXX</td>
                     <td className="py-2 px-3 text-xs text-gray-900">XXXXXX</td>
                     <td className="py-2 px-3 text-xs text-gray-900">XXXXX</td>
                     <td className="py-2 px-3 text-xs text-gray-900">
-                      <div className="flex space-x-1">
-                        <button className="text-blue-600 hover:text-blue-800 p-1">
-                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                          </svg>
+                      <div className="flex justify-center space-x-1">
+                        <button className=" p-1 border border-gray-300 rounded bg-gray-100 hover:bg-gray-50 mr-2">
+                          <PencilLine className="w-3 h-3" />
                         </button>
-                        <button className="text-red-600 hover:text-red-800 p-1">
-                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                          </svg>
+                        <button className=" p-1 border border-gray-300 rounded bg-gray-100 hover:bg-gray-50">
+                          <Trash className="w-3 h-3" />
                         </button>
                       </div>
                     </td>
