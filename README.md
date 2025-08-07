@@ -6,12 +6,12 @@ A responsive user dashboard built using **React** and **Tailwind CSS** as part o
 - Clean and readable code  
 - Fully responsive across devices
 
-## 🔗 Live Demo
+##  Live Demo
 
 - Hosted App: [https://employee-form-ogzd.vercel.app/](https://employee-form-ogzd.vercel.app/)
 - Video Walkthrough: [https://youtu.be/-NpRx2329t4](https://youtu.be/-NpRx2329t4)
 
-## 🛠 Setup
+##  Setup
 
 ```bash
 npm install
