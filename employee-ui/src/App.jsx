@@ -266,15 +266,20 @@ const EmployeeCreationForm = () => {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 space-y-2 sm:space-y-0">
               <h3 className="text-gray-900 font-medium text-sm">Added Employee Details</h3>
               <div className="flex items-center space-x-1 overflow-x-auto">
+                {/* Search input - hidden on mobile, show only icon */}
                 <div className="relative flex-shrink-0">
                   <input
                     type="text"
                     placeholder="Search By"
-                    className="pl-8 pr-3 py-1.5 border border-gray-300 rounded text-xs w-48 sm:w-56 md:w-64 placeholder-gray-400"
+                    className="hidden md:block pl-8 pr-3 py-1.5 border border-gray-300 rounded text-xs w-48 sm:w-56 md:w-64 placeholder-gray-400"
                   />
                   <div className="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none">
                     <Search className="w-4 h-4 text-gray-400" />
                   </div>
+                  {/* Show only search icon on mobile */}
+                  <button className="block md:hidden p-1.5 text-gray-600 hover:text-gray-800 border border-gray-300 rounded bg-white hover:bg-gray-50">
+                    <Search className="w-4 h-4" />
+                  </button>
                 </div>
                 <button className="p-1.5 text-gray-600 hover:text-gray-800 flex-shrink-0 border border-gray-300 rounded bg-white hover:bg-gray-50">
                   <ListFilter className="w-4 h-4" />
@@ -309,19 +314,19 @@ const EmployeeCreationForm = () => {
                       </div>
                     </th>
                     <th className="text-left py-2 px-3 text-xs font-medium text-gray-700 min-w-32">
-                      <div className="flex items-center justify-between">
+                      <div className="flex items-center">
                         <span>Employee Type</span>
                         <Search className="w-3 h-3 text-gray-500 ml-1" />
                       </div>
                     </th>
                     <th className="text-left py-2 px-3 text-xs font-medium text-gray-700 min-w-28">
-                      <div className="flex items-center justify-between">
+                      <div className="flex items-center">
                         <span>First Name</span>
                         <Search className="w-3 h-3 text-gray-500 ml-1" />
                       </div>
                     </th>
                     <th className="text-left py-2 px-3 text-xs font-medium text-gray-700 min-w-28">
-                      <div className="flex items-center justify-between">
+                      <div className="flex items-center">
                         <span>Last Name</span>
                         <Search className="w-3 h-3 text-gray-500 ml-1" />
                       </div>
@@ -344,10 +349,10 @@ const EmployeeCreationForm = () => {
                     <td className="py-2 px-3 text-xs text-gray-900">XXXXX</td>
                     <td className="py-2 px-3 text-xs text-gray-900">
                       <div className="flex justify-center space-x-1">
-                        <button className=" p-1 border border-gray-300 rounded bg-gray-100 hover:bg-gray-50 mr-2">
+                        <button className="text-blue-600 hover:text-blue-800 p-1">
                           <PencilLine className="w-3 h-3" />
                         </button>
-                        <button className=" p-1 border border-gray-300 rounded bg-gray-100 hover:bg-gray-50">
+                        <button className="text-red-600 hover:text-red-800 p-1">
                           <Trash className="w-3 h-3" />
                         </button>
                       </div>
