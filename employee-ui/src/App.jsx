@@ -1,98 +1,13 @@
 import React, { useState } from 'react';
 import { Plus, ChevronDown, ListFilter, Download, Upload, Trash, EllipsisVertical, Search, PencilLine } from 'lucide-react';
-
-// Move reusable components OUTSIDE the main component
-const InputField = ({ name, label, type = 'text', required = false, disabled = false, placeholder = '', value, onChange, error }) => (
-  <div>
-    <label className="block text-sm text-gray-700 mb-1">
-      {label}
-      {placeholder && <span className="text-gray-400"> {placeholder}</span>}
-      {required && <span className="text-red-500">*</span>}
-    </label>
-    <input
-      type={type}
-      name={name}
-      value={value}
-      onChange={onChange}
-      disabled={disabled}
-      className={`w-full px-3 py-2 border rounded text-sm ${
-        disabled ? 'bg-gray-100 text-gray-500' : 'bg-white'
-      } ${error ? 'border-red-500' : 'border-gray-300'}`}
-    />
-    {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
-  </div>
-);
-
-const SelectField = ({ name, label, options, required = false, value, onChange, error }) => (
-  <div>
-    <label className="block text-sm text-gray-700 mb-1">
-      {label}
-      {required && <span className="text-red-500">*</span>}
-    </label>
-    <div className="relative">
-      <select
-        name={name}
-        value={value}
-        onChange={onChange}
-        className={`w-full px-3 py-2 border rounded appearance-none bg-white pr-8 text-sm ${
-          error ? 'border-red-500' : 'border-gray-300'
-        }`}
-      >
-        {options.map(option => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
-      <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-        <ChevronDown />
-      </div>
-    </div>
-    {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
-  </div>
-);
-
-const TabButton = ({ tab, activeTab, onClick }) => (
-  <button 
-    onClick={() => onClick(tab.id)}
-    className={`py-2 text-sm whitespace-nowrap ${
-      activeTab === tab.id
-        ? 'text-blue-500 border-b-2 border-blue-500 font-medium' 
-        : 'text-gray-500 hover:text-gray-700'
-    }`}
-  >
-    {tab.label}
-  </button>
-);
-
-const ToolbarButton = ({ icon: Icon, label, onClick }) => (
-  <button 
-    onClick={onClick}
-    className="p-1.5 text-gray-600 hover:text-gray-800 flex-shrink-0 border border-gray-300 rounded bg-white hover:bg-gray-50"
-    title={label}
-  >
-    <Icon className="w-4 h-4" />
-  </button>
-);
-
-const TableHeader = ({ header, selectedRows, filteredEmployees, onSelectAll }) => (
-  <th className={`py-2 px-3 text-xs font-medium text-gray-700 ${
-    header.center ? 'text-center w-20' : 'text-left'
-  } ${header.key === 'no' ? 'min-w-16' : header.key === 'employeeType' ? 'min-w-32' : 'min-w-28'}`}>
-    <div className="flex items-center">
-      {header.hasCheckbox && (
-        <input 
-          type="checkbox" 
-          className="mr-2 scale-75"
-          checked={selectedRows.length === filteredEmployees.length && filteredEmployees.length > 0}
-          onChange={(e) => onSelectAll(e.target.checked)}
-        />
-      )}
-      <span>{header.label}</span>
-      {header.searchable && <Search className="w-3 h-3 text-gray-500 ml-1" />}
-    </div>
-  </th>
-);
+import InputField from './components/InputField';
+import SelectField from './components/SelectField';
+import TabButton from './components/TabButton';
+import ToolbarButton from './components/ToolbarButton';
+import TableHeader from './components/TableHeader';
+import EmployeeTable from './components/EmployeeTable';
+import Header from './components/Header';
+import EmployeeForm from './components/EmployeeForm';
 
 const EmployeeCreationForm = () => {
   // Main navigation state
