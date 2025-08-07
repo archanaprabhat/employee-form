@@ -505,7 +505,7 @@ const EmployeeCreationForm = () => {
             <h3 className="text-gray-900 font-medium mb-4 text-base bg-gray-100 py-2 px-4">
               Personal Details
             </h3>
-            <div className="px-4 mr-20">
+            <div className="px-4 mr-0 lg:mr-20">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {personalDetailsFields.map(field => (
                   field.type === 'select' ? (
@@ -674,7 +674,7 @@ const EmployeeCreationForm = () => {
     switch(activeTab) {
       case 'employee-details':
         return (
-          <div className="px-4 py-5 mr-20">
+          <div className="px-4 py-5 mr-0 lg:mr-20">
             {/* Employee ID and Type Row */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-6">
               <InputField
