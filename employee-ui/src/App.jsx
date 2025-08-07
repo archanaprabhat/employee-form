@@ -349,10 +349,10 @@ const EmployeeCreationForm = () => {
                     <td className="py-2 px-3 text-xs text-gray-900">XXXXX</td>
                     <td className="py-2 px-3 text-xs text-gray-900">
                       <div className="flex justify-center space-x-1">
-                        <button className="text-blue-600 hover:text-blue-800 p-1">
+                        <button className=" p-1 border border-gray-300 rounded bg-gray-100 hover:bg-gray-50 mr-2">
                           <PencilLine className="w-3 h-3" />
                         </button>
-                        <button className="text-red-600 hover:text-red-800 p-1">
+                        <button className=" p-1 border border-gray-300 rounded bg-gray-100 hover:bg-gray-50">
                           <Trash className="w-3 h-3" />
                         </button>
                       </div>
