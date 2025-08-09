@@ -1,6 +1,6 @@
 # User Dashboard – React + Tailwind
 
-A responsive user dashboard built using **React** and **Tailwind CSS** as part of a take-home UI assignment for **Driver Logistics**.
+A responsive user dashboard built using **React** and **Tailwind CSS**
 
 - Modular, reusable components  
 - Clean and readable code  
