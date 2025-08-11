@@ -9,6 +9,19 @@ import EmployeeTable from './components/EmployeeTable';
 import Header from './components/Header';
 import EmployeeForm from './components/EmployeeForm';
 
+// Phone validation constants
+const PHONE_MAX_LENGTH = 10;
+const PHONE_REGEX = new RegExp(`^[0-9]{${PHONE_MAX_LENGTH}}$`);
+
+// Phone helper functions
+const normalizePhone = (value) => {
+  return value.replace(/\D/g, '').slice(0, PHONE_MAX_LENGTH);
+};
+
+const isValidPhone = (value) => {
+  return PHONE_REGEX.test(value);
+};
+
 const EmployeeCreationForm = () => {
   // Main navigation state
   const [activeMainTab, setActiveMainTab] = useState('employee-creation');
@@ -40,11 +53,7 @@ const EmployeeCreationForm = () => {
     physicallyHandicapped: ''
   });
 
-  // Validation functions
-  const validateMobilePhone = (phone) => {
-    const phoneRegex = /^[0-9]{10}$/;
-    return phoneRegex.test(phone.replace(/\s+/g, ''));
-  };
+ 
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -57,12 +66,12 @@ const EmployeeCreationForm = () => {
     if (!data.firstName.trim()) newErrors.firstName = 'First Name is required';
     if (!data.lastName.trim()) newErrors.lastName = 'Last Name is required';
     
-    if (data.mobilePhone && !validateMobilePhone(data.mobilePhone)) {
-      newErrors.mobilePhone = 'Mobile phone must be 10 digits';
+    if (data.mobilePhone && !isValidPhone(data.mobilePhone)) {
+      newErrors.mobilePhone = `Mobile phone must be ${PHONE_MAX_LENGTH} digits`;
     }
     
-    if (data.homePhone && !validateMobilePhone(data.homePhone)) {
-      newErrors.homePhone = 'Home phone must be 10 digits';
+    if (data.homePhone && !isValidPhone(data.homePhone)) {
+      newErrors.homePhone = `Home phone must be ${PHONE_MAX_LENGTH} digits`;
     }
     
     if (data.personalEmail && !validateEmail(data.personalEmail)) {
@@ -78,7 +87,7 @@ const EmployeeCreationForm = () => {
 
     // Process mobile/home phone to only allow numbers
     if (name === 'mobilePhone' || name === 'homePhone') {
-      processedValue = value.replace(/[^0-9]/g, '').slice(0, 10);
+      processedValue = normalizePhone(value);
     }
 
     const newFormData = { ...formData, [name]: processedValue };
@@ -659,7 +668,7 @@ const EmployeeCreationForm = () => {
           <div className="flex items-center min-w-0 flex-1">
             {/* Dynamic Tabs */}
             <div className="flex items-center min-w-0">
-              {mainTabs.map((tab, index) => (
+              {mainTabs.map((tab) => (
                 <div key={tab.id} className="flex items-center flex-shrink-0">
                   <button 
                     onClick={() => handleMainTabClick(tab.id)}
