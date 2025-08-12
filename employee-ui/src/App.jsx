@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Plus, ChevronDown, ListFilter, Download, Upload, Trash, EllipsisVertical, Search, PencilLine } from 'lucide-react';
 import InputField from './components/InputField';
 import SelectField from './components/SelectField';
@@ -32,9 +32,7 @@ const EmployeeCreationForm = () => {
 
   // Sub-tab state (for form tabs within employee creation)
   const [activeTab, setActiveTab] = useState('employee-details');
-  const [employees, setEmployees] = useState([
-    { id: 1, employeeType: 'XXXX', firstName: 'XXXXXX', lastName: 'XXXXX' }
-  ]);
+  const [employees, setEmployees] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedRows, setSelectedRows] = useState([]);
   const [editingEmployee, setEditingEmployee] = useState(null);
@@ -53,7 +51,16 @@ const EmployeeCreationForm = () => {
     physicallyHandicapped: ''
   });
 
- 
+  useEffect(() => {
+    const fetchEmployees = async() =>  {
+      const res = await fetch('http://localhost:3000/employees')
+      const data = await res.json();
+      setEmployees(data)
+      
+    }
+    fetchEmployees()
+  }, [])
+
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

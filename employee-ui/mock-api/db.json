@@ -1,0 +1,56 @@
+{
+    "employees" : [
+        {
+            "id": 1,
+            "employeeType": "Own",
+            "firstName": "Archana",
+            "middleName": "T K",
+            "lastName": "Prabhat",
+            "mobile": "9945441400",
+            "homeMobile": "4808194090",
+            "email": "dibin@example.com",
+            "isPhysicallyHandicapped": false,
+            "createdOn": "2025-08-07T08:15:14.764777Z",
+            "updatedOn": "2025-08-07T08:15:14.771095Z"
+          },
+          {
+            "id": 2,
+            "employeeType": "Contract",
+            "firstName": "Dunder",
+            "middleName": "Michael",
+            "lastName": "Mifflin",
+            "mobile": "9876543210",
+            "homeMobile": "1234567890",
+            "email": "john.doe@example.com",
+            "isPhysicallyHandicapped": false,
+            "createdOn": "2025-08-06T10:30:00.000000Z",
+            "updatedOn": "2025-08-06T10:30:00.000000Z"
+          },
+          {
+            "id": 3,
+            "employeeType": "Consultant",
+            "firstName": "Barney",
+            "middleName": "",
+            "lastName": "Stinson",
+            "mobile": "8765432109",
+            "homeMobile": "9876543210",
+            "email": "sarah.wilson@example.com",
+            "isPhysicallyHandicapped": true,
+            "createdOn": "2025-08-05T14:45:30.000000Z",
+            "updatedOn": "2025-08-05T14:45:30.000000Z"
+          },
+          {
+            "id": 4,
+            "employeeType": "Consultant",
+            "firstName": "Jon",
+            "middleName": "",
+            "lastName": "Snow",
+            "mobile": "8765432109",
+            "homeMobile": "9876543210",
+            "email": "sarah.wilson@example.com",
+            "isPhysicallyHandicapped": true,
+            "createdOn": "2025-08-05T14:45:30.000000Z",
+            "updatedOn": "2025-08-05T14:45:30.000000Z"
+          }
+    ]
+}
