@@ -53,10 +53,14 @@ const EmployeeCreationForm = () => {
 
   useEffect(() => {
     const fetchEmployees = async() =>  {
-      const res = await fetch('http://localhost:3000/employees')
-      const data = await res.json();
-      setEmployees(data)
+    try{
       
+        const res = await fetch('/api/employees/')
+        const data = await res.json();
+        setEmployees(data)
+    }catch(err){
+      console.log('Error Fetching data ' , err)
+    }
     }
     fetchEmployees()
   }, [])
